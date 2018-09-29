@@ -10,7 +10,7 @@ namespace DISAssignment2
     {
         private StockNode head;
 
-        //Constructor for initialization
+        //Constructor for initialization comment
         public StockList()
         {
             this.head = null;
