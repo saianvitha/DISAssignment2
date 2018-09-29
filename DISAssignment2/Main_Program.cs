@@ -30,7 +30,7 @@ namespace DISAssignment2
             Console.WriteLine("**************************Client-1 Portfolio*****************************************");
             client1.StockList.Print();
             Console.WriteLine("Number of shares :" + client1.StockList.Length());
-            Console.WriteLine("Current value of protfolio for client 1 :" + client1.PortfolioValue);
+            Console.WriteLine("Current value of portfolio for client 1 :" + client1.PortfolioValue);
             Console.WriteLine("Stock with most shares for client 1:" + client1.StockList.MostShares());
             client1.StockList.SortByValue();
             Console.WriteLine("Portfolio sorted in descending order by number of holdings for client 1:");
@@ -52,7 +52,7 @@ namespace DISAssignment2
             Console.WriteLine("Portfolio sorted in descending order by number of holdings for client 2:");
             client2.StockList.Print();
             client2.StockList.SortByName();
-            Console.WriteLine("Portfolio sorted in alphabatical order for client 2:");
+            Console.WriteLine("Portfolio sorted in alphabetical order for client 2:");
             client2.StockList.Print();
             Console.WriteLine();
 

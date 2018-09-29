@@ -10,7 +10,7 @@ namespace DISAssignment2
         {
             public StockList StockList { get; set; }
 
-            public decimal PortfolioValue { get; set; }
+            public decimal PortfolioValue;
             public string HolderName { get; set; }
             public string HolderAddress { get; set; }
             public string ContactNumber { get; set; }
@@ -24,14 +24,18 @@ namespace DISAssignment2
                 ContactNumber = null;
             }
 
-            // Construtor for initialization
+            // Constructor for initialization
             public ClientPortfolio(string holderName, string holderAddress, string contactNumber)
             {
                 StockList = new StockList();
-                PortfolioValue = 0.0m;
+                PortfolioValue = this.StockList.Value();
                 HolderName = holderName;
                 HolderAddress = holderAddress;
                 ContactNumber = contactNumber;
             }
+            ////public decimal GetPortfolioValue()
+            //{
+            //    return this.StockList.Value();
+            //}//
         }
     }
