@@ -17,7 +17,7 @@ namespace DISAssignment2
         }
 
         //param        : NA
-        //summary      : checks if the list is empty
+        //summary      : checks if the hj list is empty
         //return       : true if list is empty, false otherwise
         //return type  : bool
         public bool IsEmpty()
