@@ -15,27 +15,27 @@ namespace DISAssignment2
         public StockList MergeList(StockList listToMerge)
         {
             StockList resultList = new StockList();
-            //StockNode current = listToMerge.head;
+            StockNode current = listToMerge.head;
 
             while (current.Next != null)
             {
-                resultList.AddStock(current.StockHolding);
+                resultList.MergeStock(current.StockHolding);
                 current = current.Next;
 
 
             }
-            resultList.AddStock(current.StockHolding);
+            resultList.MergeStock(current.StockHolding);
 
             StockNode client1 = this.head;
             while (client1.Next != null)
             {
-                resultList.AddStock(client1.StockHolding);
+                resultList.MergeStock(client1.StockHolding);
                 client1 = client1.Next;
             }
-            resultList.AddStock(client1.StockHolding);
+            resultList.MergeStock(client1.StockHolding);
 
 
-            
+
 
             // write your implementation here
 
@@ -49,12 +49,44 @@ namespace DISAssignment2
         public Stock MostShares()
         {
             Stock mostShareStock = null;
-           decimal hol= this.head.StockHolding.Holdings;
+            decimal hol = this.head.StockHolding.Holdings;
+
 
             // write your implementation here
 
+            StockNode newone = this.head;
+            StockNode previous = null;
 
-           return mostShareStock;
+            decimal Currentstockholding = newone.StockHolding.Holdings;
+
+            while (newone.Next != null)
+            {
+
+                previous = newone;
+                newone = newone.Next;
+                Currentstockholding = (newone.StockHolding).Holdings;
+
+                if (hol > Currentstockholding)
+                {
+
+                    mostShareStock = previous.StockHolding;
+
+                }
+                else
+                {
+
+                    mostShareStock = newone.StockHolding;
+                }
+                decimal abc = hol;
+                hol = Currentstockholding;
+                Currentstockholding = hol;
+
+
+
+            }
+
+
+            return mostShareStock;
         }
 
         //param        : NA
@@ -64,10 +96,21 @@ namespace DISAssignment2
         public int Length()
         {
             int length = 0;
-
+            StockNode newnode = this.head;
+            StockNode previous = null;
+            while (newnode.Next != null)
+            {
+                previous = newnode;
+                newnode = newnode.Next;
+                length++;
+            }
+            length = length + 1;
             // write your implementation here
 
             return length;
         }
+
+
+
     }
 }

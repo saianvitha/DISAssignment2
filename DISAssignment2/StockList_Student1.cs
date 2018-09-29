@@ -134,6 +134,55 @@ namespace DISAssignment2
             }
         }
 
+        public void MergeStock(Stock stock)
+        {
+            // for an empty list, we add the node at the top of the list
+            if (this.IsEmpty())
+                AddFirst(stock);
+            else
+            {
+                // if the new node is alphabetically the first, again, we add it at the top of the list
+                string nameOfStockToAdd = stock.Name;
+                string headNodeData = (this.head.StockHolding).Name;
+                if (headNodeData.CompareTo(nameOfStockToAdd) > 0)
+                    AddFirst(stock);
+                else
+                {
+                    // traverse the list to locate the stock
+                    StockNode current = this.head;
+                    StockNode previous = null;
+                    string currentStockName = (current.StockHolding).Name;
+
+                    while (current.Next != null && currentStockName.CompareTo(nameOfStockToAdd) < 0)
+                    {
+                        previous = current;
+                        current = current.Next;
+                        currentStockName = (current.StockHolding).Name;
+                    }
+
+                    // we have now traversed all stocks that are alphabetically less than the stock to be added
+                    if (current.Next != null&& currentStockName.CompareTo(nameOfStockToAdd) > 0)
+                    {
+                     
+                            // insert the stock in the current position. This requires creating a new node,
+                            //  pointing the new node to the next node
+                            //    and pointing the previous node to the current node
+                            //  QUESTION: what would happen if we flipped the sequence of assignments below?
+                            StockNode newNode = new StockNode(stock);
+                            newNode.Next = current;
+                            previous.Next = newNode;
+                       
+                    }
+                    else
+                    {
+                        // we are at the end of the list, add the stock at the end
+                        //  This is probably not the most efficient way to do it,
+                        //  since AddLast traverses the list all over again
+                        AddLast(stock);
+                    }
+                }
+            }
+        }
         //param  (Stock)stock : stock that is to be checked 
         //summary      : checks if list contains stock passed as parameter
         //                  This involves traversing the list until we find the stock
@@ -240,7 +289,9 @@ namespace DISAssignment2
         //return type  : NA
         public void SortByName()
         {
-            // write your implementation here
+            
+           // write your implementation here
+
 
         }
     }
