@@ -10,14 +10,14 @@ namespace DISAssignment2
     {
         private StockNode head;
 
-        //Constructor for initialization comment
+        //Constructor for initialization
         public StockList()
         {
             this.head = null;
         }
 
-        //param        : NA
-        //summary      : checks if the hj list is empty
+        //param        : NAjkm
+        //summary      : checks if the list is empty
         //return       : true if list is empty, false otherwise
         //return type  : bool
         public bool IsEmpty()
@@ -230,7 +230,7 @@ namespace DISAssignment2
         //return type  : NA
         public void SortByValue()
         {
-            // write your implementation here
+           
 
         }
 

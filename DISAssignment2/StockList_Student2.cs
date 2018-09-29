@@ -15,7 +15,7 @@ namespace DISAssignment2
         public StockList MergeList(StockList listToMerge)
         {
             StockList resultList = new StockList();
-            //StockNode current = listToMerge.head;
+            StockNode current = listToMerge.head;
 
             while (current.Next != null)
             {
