@@ -16,7 +16,7 @@ namespace DISAssignment2
             this.head = null;
         }
 
-        //param        : NAjk
+        //param        : NAjkm
         //summary      : checks if the list is empty
         //return       : true if list is empty, false otherwise
         //return type  : bool
