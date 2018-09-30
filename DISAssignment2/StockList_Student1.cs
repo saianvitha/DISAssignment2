@@ -279,7 +279,24 @@ namespace DISAssignment2
         //return type  : NA
         public void SortByValue()
         {
-            // write your implementation here
+            StockNode descOrder = null;
+            StockNode current = this.head;
+            StockNode nxtNode = current.Next;
+            while (nxtNode != null)
+            {
+                while (nxtNode != null) {
+                    if (current.StockHolding.Holdings < nxtNode.StockHolding.Holdings)
+                    {
+                        descOrder = Swap(current.StockHolding);
+                        nxtNode = nxtNode.Next;
+                        current = descOrder;
+
+                    }
+                    nxtNode = nxtNode.Next;
+
+                }
+                current = current.Next;
+            }
 
         }
 

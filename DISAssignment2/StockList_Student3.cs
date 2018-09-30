@@ -16,15 +16,16 @@ namespace DISAssignment2
         {
         decimal value = 0.0m;
 
-        //    // write your implementation here
-        //    StockNode current = this.head.Next.StockHolding;
-        //    StockNode previous = null;
-        //    while (current.Next != null)
-        //    {
-        //        value += current.StockHolding.Holdings * current.StockHolding.CurrentPrice;
-        //        previous = current;
-        //        current = current.Next;
-        //    }
+            // write your implementation here
+            StockNode current = this.head;
+            StockNode previous = null;
+            while (current.Next != null)
+            {
+                value += current.StockHolding.Holdings * current.StockHolding.CurrentPrice;
+                previous = current;
+                current = current.Next;
+            }
+            value += current.StockHolding.Holdings * current.StockHolding.CurrentPrice;
 
             return value;
         }

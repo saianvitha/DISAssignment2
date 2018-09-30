@@ -54,33 +54,33 @@ namespace DISAssignment2
 
             // write your implementation here
 
-            StockNode newone = this.head;
+            StockNode current = this.head;
             StockNode previous = null;
+            decimal highNumber = 0.0m;
 
-            decimal Currentstockholding = newone.StockHolding.Holdings;
 
-            while (newone.Next != null)
+            while (current.Next != null)
             {
 
-                previous = newone;
-                newone = newone.Next;
-                Currentstockholding = (newone.StockHolding).Holdings;
+                //previous = current;
+                current = current.Next;
+              //  decimal holprev = previous.StockHolding.Holdings;
+                decimal holcurr = current.StockHolding.Holdings;
+               
 
-                if (hol > Currentstockholding)
+                if (holcurr > highNumber)
                 {
-
-                    mostShareStock = previous.StockHolding;
+                    highNumber = holcurr;
+                    mostShareStock = current.StockHolding;
 
                 }
-                else
-                {
+                //else
+                //{
+                //    highNumber = holprev;
 
-                    mostShareStock = newone.StockHolding;
-                }
-                decimal abc = hol;
-                hol = Currentstockholding;
-                Currentstockholding = hol;
-
+                //    mostShareStock = previous.StockHolding;
+                //}
+                
 
 
             }

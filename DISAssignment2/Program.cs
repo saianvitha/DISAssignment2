@@ -28,10 +28,14 @@ namespace DISAssignment2
             public ClientPortfolio(string holderName, string holderAddress, string contactNumber)
             {
                 StockList = new StockList();
-                PortfolioValue = this.StockList.Value();
+            PortfolioValue = 0.0m;
                 HolderName = holderName;
                 HolderAddress = holderAddress;
                 ContactNumber = contactNumber;
             }
+          public decimal GetPortfolioValue()
+        {
+           return this.StockList.Value();
+        }
         }
     }
