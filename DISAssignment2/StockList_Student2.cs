@@ -9,36 +9,35 @@ namespace DISAssignment2
     public partial class StockList
     {
         //param   (StockList)listToMerge : second list to be merged 
-        //summary      : merge two different list into a single result list
+        //summary      : merge two different lists into a single result list
         //return       : merged list
         //return type  : StockList
         public StockList MergeList(StockList listToMerge)
         {
+            // Creating a new Stocklist called resultList to store and return the merged lists//
             StockList resultList = new StockList();
             StockNode current = listToMerge.head;
-
+            // While loop to merge stocks from Client2 Portfolio to resultList until the end of Client2 is reached//
             while (current.Next != null)
             {
                 resultList.MergeStock(current.StockHolding);
                 current = current.Next;
-
-
             }
+            // For the last stock, it exits the loop and gets added separately//
             resultList.MergeStock(current.StockHolding);
 
+
             StockNode client1 = this.head;
+            // While loop to merge stocks from Client1 Portfolio to resultList until the end of Client1 is reached//
             while (client1.Next != null)
             {
                 resultList.MergeStock(client1.StockHolding);
                 client1 = client1.Next;
             }
+            // For the last stock, it exits the loop and gets added separately//
             resultList.MergeStock(client1.StockHolding);
 
-
-
-
-            // write your implementation here
-
+            // Returns the final merged list//
             return resultList;
         }
 
@@ -49,42 +48,26 @@ namespace DISAssignment2
         public Stock MostShares()
         {
             Stock mostShareStock = null;
+
+            // Declaring a variable called "hol" to compare holdings of stocks//
             decimal hol = this.head.StockHolding.Holdings;
-
-
-            // write your implementation here
-
             StockNode current = this.head;
             decimal highNumber = 0.0m;
 
-
+            // While loop to traverse the list and check for the if condition until the end of list is reached//
             while (current.Next != null)
             {
-
-                //previous = current;
                 current = current.Next;
-              //  decimal holprev = previous.StockHolding.Holdings;
                 decimal holcurr = current.StockHolding.Holdings;
-               
-
+               // Condition to compare the current stock's holdings and stock with maximum holdings//
                 if (holcurr > highNumber)
                 {
                     highNumber = holcurr;
                     mostShareStock = current.StockHolding;
-
-                }
-                //else
-                //{
-                //    highNumber = holprev;
-
-                //    mostShareStock = previous.StockHolding;
-                //}
-                
-
+                }                          
 
             }
-
-
+            // Returns the stock with maximum number of holdings//
             return mostShareStock;
         }
 
@@ -97,19 +80,19 @@ namespace DISAssignment2
             int length = 0;
             StockNode newnode = this.head;
             StockNode previous = null;
+            // While loop to traverse through the list and increment the length variable by one for every stock until the end of list is reached//
             while (newnode.Next != null)
             {
                 previous = newnode;
                 newnode = newnode.Next;
                 length++;
             }
+            // For the last stock in the list, the loop is exited and length variable is incremented separately//
             length = length + 1;
-            // write your implementation here
 
+            // Returns the final length i.e., the number of nodes in the list//
             return length;
         }
-
-
 
     }
 }
