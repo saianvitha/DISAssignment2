@@ -48,35 +48,8 @@ namespace DISAssignment2
         //return type  : Stock
         public Stock MostShares()
         {
-            Stock mostShareStock = null;
-            Stock mostShareStock1 = null;
-           decimal hol= this.head.StockHolding.Holdings;
-
-            // write your implementation here
-            StockNode current = this.head;
-            StockNode previous = null;
             
-            while(current.Next!=null)
-            {
-                previous = current;
-                current = current.Next;
-                decimal holprev = previous.StockHolding.Holdings;
-                decimal holcurr = current.StockHolding.Holdings;
-                if (holcurr > holprev)
-                {
-                    if(holcurr>hol)
-                    {
-                        
-                        hol = holcurr;
-                    }
-                    mostShareStock = current.StockHolding;
-                }
-                else
-                    mostShareStock = previous.StockHolding;
-                
 
-            }
-           return mostShareStock1;
         }
 
         //param        : NA

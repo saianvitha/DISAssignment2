@@ -16,16 +16,6 @@ namespace DISAssignment2
         {
             decimal value = 0.0m;
 
-            //// write your implementation here
-            //StockNode current = ;
-            //StockNode previous = null;
-            //while(current.Next!= null)
-            //{
-            //    value += current.StockHolding.Holdings * current.StockHolding.CurrentPrice;
-            //    previous = current;
-            //    current = current.Next;
-            //}
-
             return value;
         }
 
