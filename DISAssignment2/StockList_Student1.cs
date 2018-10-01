@@ -267,10 +267,70 @@ namespace DISAssignment2
             currNodeOne.Next = currNodeTwo.Next;
             currNodeTwo.Next = temp;
 
-            return currNodeTwo;
+            return this.head;
         }
 
+        public StockNode Swap2(Stock nodeone, Stock nodetwo)
+        {
+            StockNode p = this.head;
+            StockNode prev = null;
+            while (p != null && p.StockHolding != nodeone)
+            {
+                prev = p;
+                p = p.Next;
+            }
+            StockNode Px = p;
+            StockNode prevx = prev;
+            p = this.head;
 
+
+            prev = null;
+            while (p != null && p.StockHolding != nodetwo)
+            {
+                prev = p;
+                p = p.Next;
+            }
+            StockNode Py = p;
+            StockNode prevy = prev;
+            StockNode temp = null;
+            
+            if (prevx == null&& Py.Next!=null)
+            {
+                temp = Py.Next;
+                Px.Next = temp;
+                Py.Next = Px;
+                this.head=Py;
+            }
+            //else if (prevy == null)
+            //{
+            //    Px = head;
+            //    prevx.Next = prevy;
+            //}
+            else if (prevx != null && prevy!=null && Py.Next!=null)
+            {
+                temp = Py.Next;
+                Px.Next = temp;
+                Py.Next = Px;
+                prevx.Next = Py;
+                this.head = prevx;
+                
+            }
+            else if(Py.Next==null && Px!=null&& prevy!= Px)
+            {
+                Py.Next = prevy;
+                prevx.Next = Py;
+                prevy.Next = Px;
+                Px.Next = null;
+                this.head = prevx;
+            }
+            else if(prevy==Px && Py.Next==null)
+            {
+               this.head= Swap(nodeone);
+            }
+            return this.head;
+        }   
+
+ 
         // FOR STUDENTS
 
         //param        : NA
@@ -280,39 +340,40 @@ namespace DISAssignment2
         public void SortByValue()
         {
             StockNode tempOrder = null;
-            Stock descOrder = null;
-            StockList listOfStocks = new StockList();
-            
-
             StockNode current = this.head;
             StockNode nxtNode = current.Next;
             while (current != null)
             {
-                while (nxtNode != null) {
+
+                while (nxtNode != null)
+                {
                     if (current.StockHolding.Holdings < nxtNode.StockHolding.Holdings)
                     {
+                        
 
-                        nxtNode.Next = current;
-                        current.Next = nxtNode.Next;
-                        current = nxtNode.Next;
-
-
-                        //tempOrder = Swap(current.StockHolding);
-                       // nxtNode = nxtNode.Next;
-                        //current = tempOrder;
+                        tempOrder = Swap2(current.StockHolding,nxtNode.StockHolding);
+                        nxtNode = nxtNode.Next;
+                        current = tempOrder;
+                        
 
                     }
-                    if(nxtNode!=null)
-                    nxtNode = nxtNode.Next;
+                    if (nxtNode != null)
+                        nxtNode = nxtNode.Next;
 
                 }
-                descOrder = tempOrder.StockHolding;
+               // descOrder = tempOrder.StockHolding;
                 current = current.Next;
-                nxtNode = current.Next;
-                listOfStocks.AddLast(descOrder);
+                if (current != null)
+                    nxtNode = current.Next;
+                else
+                    break;
+               // listOfStocks.AddLast(descOrder);
                 
+                
+           
+
             }
-            this.head = listOfStocks.head;
+            this.head = tempOrder;
         }
 
         //param        : NA
@@ -321,10 +382,47 @@ namespace DISAssignment2
         //return type  : NA
         public void SortByName()
         {
-            
-           // write your implementation here
+
+
+            // write your implementation here
+            StockNode tempOrder = null;
+            StockNode current = this.head;
+            StockNode nxtNode = current.Next;
+            while (current != null)
+            {
+
+                while (nxtNode != null)
+                {
+                    if (current.StockHolding.Name.CompareTo(nxtNode.StockHolding.Name)>0)
+                    {
+
+
+                        tempOrder = Swap2(current.StockHolding, nxtNode.StockHolding);
+                        nxtNode = nxtNode.Next;
+                        current = tempOrder;
+
+
+                    }
+                    if (nxtNode != null)
+                        nxtNode = nxtNode.Next;
+
+                }
+                // descOrder = tempOrder.StockHolding;
+                current = current.Next;
+                if (current != null)
+                    nxtNode = current.Next;
+                else
+                    break;
+                // listOfStocks.AddLast(descOrder);
+
+
+
+
+            }
+            this.head = tempOrder;
 
 
         }
     }
-}
+ }
+

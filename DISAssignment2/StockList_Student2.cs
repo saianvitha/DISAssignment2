@@ -55,7 +55,6 @@ namespace DISAssignment2
             // write your implementation here
 
             StockNode current = this.head;
-            StockNode previous = null;
             decimal highNumber = 0.0m;
 
 
