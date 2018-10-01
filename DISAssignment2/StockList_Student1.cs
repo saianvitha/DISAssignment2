@@ -161,17 +161,17 @@ namespace DISAssignment2
                     }
 
                     // we have now traversed all stocks that are alphabetically less than the stock to be added
-                    if (current.Next != null&& currentStockName.CompareTo(nameOfStockToAdd) > 0)
+                    if (current.Next != null && currentStockName.CompareTo(nameOfStockToAdd) > 0)
                     {
-                     
-                            // insert the stock in the current position. This requires creating a new node,
-                            //  pointing the new node to the next node
-                            //    and pointing the previous node to the current node
-                            //  QUESTION: what would happen if we flipped the sequence of assignments below?
-                            StockNode newNode = new StockNode(stock);
-                            newNode.Next = current;
-                            previous.Next = newNode;
-                       
+
+                        // insert the stock in the current position. This requires creating a new node,
+                        //  pointing the new node to the next node
+                        //    and pointing the previous node to the current node
+                        //  QUESTION: what would happen if we flipped the sequence of assignments below?
+                        StockNode newNode = new StockNode(stock);
+                        newNode.Next = current;
+                        previous.Next = newNode;
+
                     }
                     else
                     {
@@ -279,6 +279,11 @@ namespace DISAssignment2
         //return type  : NA
         public void SortByValue()
         {
+           /* Comparison<Stock> sortedStock = new Comparison<Stock>(CompareStockHoldings);
+            ClientPortfolio client
+
+            client1.Sort(sortedStock);*/
+
             StockNode tempOrder = null;
             Stock descOrder = null;
             StockList listOfStocks = new StockList();
@@ -325,6 +330,19 @@ namespace DISAssignment2
            // write your implementation here
 
 
+
         }
+
+        }
+       /* public static int CompareStockHoldings(Stock s1, Stock s2)
+
+        {
+
+            return s1.Holdings.CompareTo(s2.Holdings);
+
+        }*/
+
+
     }
+
 }
