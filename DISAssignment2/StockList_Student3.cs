@@ -14,9 +14,18 @@ namespace DISAssignment2
         //return type  : decimal
         public decimal Value()
         {
-            decimal value = 0.0m;
+        decimal value = 0.0m;
 
             // write your implementation here
+            StockNode current = this.head;
+            StockNode previous = null;
+            while (current.Next != null)
+            {
+                value += current.StockHolding.Holdings * current.StockHolding.CurrentPrice;
+                previous = current;
+                current = current.Next;
+            }
+            value += current.StockHolding.Holdings * current.StockHolding.CurrentPrice;
 
             return value;
         }
@@ -27,12 +36,62 @@ namespace DISAssignment2
         //return type  : int
         public int Similarity(StockList listToCompare)
         {
+            //int similarityIndex1 = 0;
+            //int similarityIndex2 = 0;
             int similarityIndex = 0;
 
             // write your implementation here
+            StockNode current = this.head;
+            StockNode previous = null;
+            StockNode two = null;
+            while (listToCompare.head.Next != null)
+            {
+                while (current.Next != null)
+                {
+                    if (current.StockHolding.Name == listToCompare.head.StockHolding.Name)
+                    {
+                        similarityIndex++;
+                    }
+                   
+                    previous = current;
+                    current = current.Next;
+                }
+                if(current.Next==null)
+                {
+                    if (current.StockHolding.Name == listToCompare.head.StockHolding.Name)
+                    {
+                        similarityIndex++;
+                    }
+                }
+                current = this.head;
+                two = listToCompare.head;
+                listToCompare.head = listToCompare.head.Next;
+            }
+            while (current.Next != null)
+            {
+                if (listToCompare.head.Next == null)
+                {
+                    if (current.StockHolding.Name == listToCompare.head.StockHolding.Name)
+                    {
+                        similarityIndex++;
+                    }
 
+                    previous = current;
+                    current = current.Next;
+                }
+                if (current.Next == null)
+                {
+                    if (current.StockHolding.Name == listToCompare.head.StockHolding.Name)
+                    {
+                        similarityIndex++;
+                    }
+                }
+            }
             return similarityIndex;
         }
+
+            
+        
 
         //param        : NA
         //summary      : Print all the nodes present in the list
