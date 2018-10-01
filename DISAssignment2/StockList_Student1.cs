@@ -279,25 +279,40 @@ namespace DISAssignment2
         //return type  : NA
         public void SortByValue()
         {
-            StockNode descOrder = null;
+            StockNode tempOrder = null;
+            Stock descOrder = null;
+            StockList listOfStocks = new StockList();
+            
+
             StockNode current = this.head;
             StockNode nxtNode = current.Next;
-            while (nxtNode != null)
+            while (current != null)
             {
                 while (nxtNode != null) {
                     if (current.StockHolding.Holdings < nxtNode.StockHolding.Holdings)
                     {
-                        descOrder = Swap(current.StockHolding);
-                        nxtNode = nxtNode.Next;
-                        current = descOrder;
+
+                        nxtNode.Next = current;
+                        current.Next = nxtNode.Next;
+                        current = nxtNode.Next;
+
+
+                        //tempOrder = Swap(current.StockHolding);
+                       // nxtNode = nxtNode.Next;
+                        //current = tempOrder;
 
                     }
+                    if(nxtNode!=null)
                     nxtNode = nxtNode.Next;
 
                 }
+                descOrder = tempOrder.StockHolding;
                 current = current.Next;
+                nxtNode = current.Next;
+                listOfStocks.AddLast(descOrder);
+                
             }
-
+            this.head = listOfStocks.head;
         }
 
         //param        : NA
