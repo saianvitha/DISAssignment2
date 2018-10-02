@@ -272,58 +272,58 @@ namespace DISAssignment2
 
         public StockNode Swap2(Stock nodeone, Stock nodetwo)
         {
-            StockNode p = this.head;
-            StockNode prev = null;
-            while (p != null && p.StockHolding != nodeone)
+            StockNode current1 = this.head;
+            StockNode previous1 = null;
+            while (current1 != null && current1.StockHolding != nodeone)
             {
-                prev = p;
-                p = p.Next;
+                previous1 = current1;
+                current1 = current1.Next;
             }
-            StockNode Px = p;
-            StockNode prevx = prev;
-            p = this.head;
+            StockNode currentemp = current1;
+            StockNode previoustemp = previous1;
+            current1 = this.head;
 
 
-            prev = null;
-            while (p != null && p.StockHolding != nodetwo)
+            previous1 = null;
+            while (current1 != null && current1.StockHolding != nodetwo)
             {
-                prev = p;
-                p = p.Next;
+                previous1 = current1;
+                current1 = current1.Next;
             }
-            StockNode Py = p;
-            StockNode prevy = prev;
+            StockNode current2 = current1;
+            StockNode previous2 = previous1;
             StockNode temp = null;
             
-            if (prevx == null&& Py.Next!=null)
+            if (previoustemp == null&& current2.Next!=null)
             {
-                temp = Py.Next;
-                Px.Next = temp;
-                Py.Next = Px;
-                this.head=Py;
+                temp = current2.Next;
+                currentemp.Next = temp;
+                current2.Next = currentemp;
+                this.head=current2;
             }
             //else if (prevy == null)
             //{
             //    Px = head;
             //    prevx.Next = prevy;
             //}
-            else if (prevx != null && prevy!=null && Py.Next!=null)
+            else if (previoustemp != null && previous2!=null && current2.Next!=null)
             {
-                temp = Py.Next;
-                Px.Next = temp;
-                Py.Next = Px;
-                prevx.Next = Py;
-                this.head = prevx;
+                temp = current2.Next;
+                currentemp.Next = temp;
+                current2.Next = currentemp;
+                previoustemp.Next = current2;
+                this.head = previoustemp;
                 
             }
-            else if(Py.Next==null && Px!=null&& prevy!= Px)
+            else if(current2.Next==null && currentemp!=null&& previous2!= currentemp)
             {
-                Py.Next = prevy;
-                prevx.Next = Py;
-                prevy.Next = Px;
-                Px.Next = null;
-                this.head = prevx;
+                current2.Next = previous2;
+                previoustemp.Next = current2;
+                previous2.Next = currentemp;
+                currentemp.Next = null;
+                this.head = previoustemp;
             }
-            else if(prevy==Px && Py.Next==null)
+            else if(previous2==currentemp && current2.Next==null)
             {
                this.head= Swap(nodeone);
             }
