@@ -57,14 +57,15 @@ namespace DISAssignment2
             // While loop to traverse the list and check for the if condition until the end of list is reached//
             while (current.Next != null)
             {
-                current = current.Next;
+                
                 decimal holcurr = current.StockHolding.Holdings;
                // Condition to compare the current stock's holdings and stock with maximum holdings//
                 if (holcurr > highNumber)
                 {
                     highNumber = holcurr;
                     mostShareStock = current.StockHolding;
-                }                          
+                }
+                current = current.Next;
 
             }
             // Returns the stock with maximum number of holdings//

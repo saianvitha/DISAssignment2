@@ -274,57 +274,57 @@ namespace DISAssignment2
         // Program to swap stocks// 
         public StockNode Swap2(Stock nodeone, Stock nodetwo)
         {
-            StockNode p = this.head;
-            StockNode prev = null;
+            StockNode current1 = this.head;
+            StockNode previous1 = null;
             // While loop to check for the first stock that is to be swapped//
-            while (p != null && p.StockHolding != nodeone)
+            while (current1 != null && current1.StockHolding != nodeone)
             {
-                prev = p;
-                p = p.Next;
+                previous1 = current1;
+                current1 = current1.Next;
             }
-            StockNode Px = p;
-            StockNode prevx = prev;
-            p = this.head;
+            StockNode currenttemp = current1;
+            StockNode previoustemp = previous1;
+            current1 = this.head;
 
-            prev = null;
+            previous1 = null;
             // While loop to check for the second stock with which the first stock is to be compared//
-            while (p != null && p.StockHolding != nodetwo)
+            while (current1 != null && current1.StockHolding != nodetwo)
             {
-                prev = p;
-                p = p.Next;
+                previous1 = current1;
+                current1 = current1.Next;
             }
-            StockNode Py = p;
-            StockNode prevy = prev;
+            StockNode current2 = current1;
+            StockNode previous2 = previous1;
             StockNode temp = null;
             // Condition to swap if the first stock that is to be swapped is the first stock in the list//
-            if (prevx == null&& Py.Next!=null)
+            if (previoustemp == null&& current2.Next!=null)
             {
-                temp = Py.Next;
-                Px.Next = temp;
-                Py.Next = Px;
-                this.head=Py;
+                temp = current2.Next;
+                currenttemp.Next = temp;
+                current2.Next = currenttemp;
+                this.head=current2;
             }
             // Condition to swap if both stocks are not at the end of the list//
-            else if (prevx != null && prevy!=null && Py.Next!=null)
+            else if (previoustemp != null && previous2!=null && current2.Next!=null)
             {
-                temp = Py.Next;
-                Px.Next = temp;
-                Py.Next = Px;
-                prevx.Next = Py;
-                this.head = prevx;
+                temp = current2.Next;
+                currenttemp.Next = temp;
+                current2.Next = currenttemp;
+                previoustemp.Next = current2;
+                this.head = previoustemp;
                 
             }
             // Condition to swap if the second stock is at the end of the list//
-            else if(Py.Next==null && Px!=null&& prevy!= Px)
+            else if(current2.Next==null && currenttemp!=null&& previous2!= currenttemp)
             {
-                Py.Next = prevy;
-                prevx.Next = Py;
-                prevy.Next = Px;
-                Px.Next = null;
-                this.head = prevx;
+                current2.Next = previous2;
+                previoustemp.Next = current2;
+                previous2.Next = currenttemp;
+                currenttemp.Next = null;
+                this.head = previoustemp;
             }
             // Condition to swap if the second stock is at the end of the list and the first stock is one place before the second stock//
-            else if(prevy==Px && Py.Next==null)
+            else if(previous2==currenttemp && current2.Next==null)
             {
                this.head= Swap(nodeone);
             }
