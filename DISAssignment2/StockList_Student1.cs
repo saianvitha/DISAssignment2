@@ -270,60 +270,61 @@ namespace DISAssignment2
             return this.head;
         }
 
+
+        // Program to swap stocks// 
         public StockNode Swap2(Stock nodeone, Stock nodetwo)
         {
-            StockNode current1 = this.head;
-            StockNode previous1 = null;
-            while (current1 != null && current1.StockHolding != nodeone)
+            StockNode p = this.head;
+            StockNode prev = null;
+            // While loop to check for the first stock that is to be swapped//
+            while (p != null && p.StockHolding != nodeone)
             {
-                previous1 = current1;
-                current1 = current1.Next;
+                prev = p;
+                p = p.Next;
             }
-            StockNode currentemp = current1;
-            StockNode previoustemp = previous1;
-            current1 = this.head;
+            StockNode Px = p;
+            StockNode prevx = prev;
+            p = this.head;
 
-
-            previous1 = null;
-            while (current1 != null && current1.StockHolding != nodetwo)
+            prev = null;
+            // While loop to check for the second stock with which the first stock is to be compared//
+            while (p != null && p.StockHolding != nodetwo)
             {
-                previous1 = current1;
-                current1 = current1.Next;
+                prev = p;
+                p = p.Next;
             }
-            StockNode current2 = current1;
-            StockNode previous2 = previous1;
+            StockNode Py = p;
+            StockNode prevy = prev;
             StockNode temp = null;
-            
-            if (previoustemp == null&& current2.Next!=null)
+            // Condition to swap if the first stock that is to be swapped is the first stock in the list//
+            if (prevx == null&& Py.Next!=null)
             {
-                temp = current2.Next;
-                currentemp.Next = temp;
-                current2.Next = currentemp;
-                this.head=current2;
+                temp = Py.Next;
+                Px.Next = temp;
+                Py.Next = Px;
+                this.head=Py;
             }
-            //else if (prevy == null)
-            //{
-            //    Px = head;
-            //    prevx.Next = prevy;
-            //}
-            else if (previoustemp != null && previous2!=null && current2.Next!=null)
+            // Condition to swap if both stocks are not at the end of the list//
+            else if (prevx != null && prevy!=null && Py.Next!=null)
             {
-                temp = current2.Next;
-                currentemp.Next = temp;
-                current2.Next = currentemp;
-                previoustemp.Next = current2;
-                this.head = previoustemp;
+                temp = Py.Next;
+                Px.Next = temp;
+                Py.Next = Px;
+                prevx.Next = Py;
+                this.head = prevx;
                 
             }
-            else if(current2.Next==null && currentemp!=null&& previous2!= currentemp)
+            // Condition to swap if the second stock is at the end of the list//
+            else if(Py.Next==null && Px!=null&& prevy!= Px)
             {
-                current2.Next = previous2;
-                previoustemp.Next = current2;
-                previous2.Next = currentemp;
-                currentemp.Next = null;
-                this.head = previoustemp;
+                Py.Next = prevy;
+                prevx.Next = Py;
+                prevy.Next = Px;
+                Px.Next = null;
+                this.head = prevx;
             }
-            else if(previous2==currentemp && current2.Next==null)
+            // Condition to swap if the second stock is at the end of the list and the first stock is one place before the second stock//
+            else if(prevy==Px && Py.Next==null)
             {
                this.head= Swap(nodeone);
             }
@@ -332,7 +333,6 @@ namespace DISAssignment2
 
  
         // FOR STUDENTS
-
         //param        : NA
         //summary      : Sort the list by descending number of holdings
         //return       : NA
@@ -342,86 +342,75 @@ namespace DISAssignment2
             StockNode tempOrder = null;
             StockNode current = this.head;
             StockNode nxtNode = current.Next;
+
+            // While loop to check if the current stock used for comparison has reached the end of the list//
             while (current != null)
             {
-
+                // While loop to check if the stock that is being compared with the current stock has reached the end of the list//
                 while (nxtNode != null)
                 {
+                    // Condition to compare current stock's holdings with the next stock's holdings//
                     if (current.StockHolding.Holdings < nxtNode.StockHolding.Holdings)
-                    {
-                        
-
+                    {                        
+                        // Swapping the two stocks if the condition is true and storing into a temporary variable called "tempOrder"//
                         tempOrder = Swap2(current.StockHolding,nxtNode.StockHolding);
                         nxtNode = nxtNode.Next;
-                        current = tempOrder;
-                        
-
+                        current = tempOrder;                        
                     }
+                    // Condition to traverse the list until nxtNode reaches the end of the list//
                     if (nxtNode != null)
                         nxtNode = nxtNode.Next;
-
-                }
-               // descOrder = tempOrder.StockHolding;
+                }               
                 current = current.Next;
+                // Condition to traverse the list until current stock reaches the end of the list//
                 if (current != null)
                     nxtNode = current.Next;
                 else
-                    break;
-               // listOfStocks.AddLast(descOrder);
-                
-                
-           
+                    // Condition to break out of the loop after the list is sorted//
+                        break;
 
             }
             this.head = tempOrder;
         }
 
         //param        : NA
-        //summary      : Sort the list alphabatically
+        //summary      : Sort the list alphabetically
         //return       : NA
         //return type  : NA
         public void SortByName()
         {
 
-
-            // write your implementation here
             StockNode tempOrder = null;
             StockNode current = this.head;
             StockNode nxtNode = current.Next;
+
+            // While loop to check if the current stock used for comparison has reached the end of the list//
             while (current != null)
             {
-
+                // While loop to check if the stock that is being compared with the current stock has reached the end of the list//
                 while (nxtNode != null)
                 {
+                    // Condition to compare names of the two stocks//
                     if (current.StockHolding.Name.CompareTo(nxtNode.StockHolding.Name)>0)
                     {
-
-
+                        // Swapping the two stocks if the condition is true and storing into a temporary variable called "tempOrder"//
                         tempOrder = Swap2(current.StockHolding, nxtNode.StockHolding);
                         nxtNode = nxtNode.Next;
                         current = tempOrder;
-
-
                     }
+                    // Condition to traverse the list until nxtNode reaches the end of the list//
                     if (nxtNode != null)
                         nxtNode = nxtNode.Next;
-
-                }
-                // descOrder = tempOrder.StockHolding;
+                }                
                 current = current.Next;
+                // Condition to traverse the list until current stock reaches the end of the list//
                 if (current != null)
                     nxtNode = current.Next;
                 else
-                    break;
-                // listOfStocks.AddLast(descOrder);
-
-
-
-
+                    // Condition to break out of the loop after the list is sorted//
+                    break;         
             }
             this.head = tempOrder;
-
-
         }
     }
  }
